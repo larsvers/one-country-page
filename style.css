@@ -1,0 +1,31 @@
+body * {
+  box-sizing: border-box;
+  font-family: "Open Sans";
+}
+
+svg text {
+  font-family: "Open Sans";
+}
+
+span.thin {
+  font-weight: 300
+}
+
+#intro h1 {
+  margin-bottom: 0.1rem;
+}
+
+#intro h2 {
+  margin-top: 0.1rem;
+}
+
+#intro,
+.topic,
+.chart-module {
+  padding: 2rem;
+  border: 1px solid;
+}
+
+#container {
+  border: 1px dotted #ccc;
+}
