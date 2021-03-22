@@ -8,7 +8,7 @@ svg text {
 }
 
 span.thin {
-  font-weight: 300
+  font-weight: 300;
 }
 
 #intro h1 {
@@ -17,6 +17,7 @@ span.thin {
 
 #intro h2 {
   margin-top: 0.1rem;
+  font-weight: 100;
 }
 
 #intro,
@@ -29,3 +30,53 @@ span.thin {
 #container {
   border: 1px dotted #ccc;
 }
+
+/* Chart module styles */
+.module-body div {
+  border: 1px dotted #aaa;
+}
+
+.module-body {
+  position: relative;
+  display: flex;
+}
+
+.module-body .visual-wrap {
+  position: relative;
+  width: 70%;
+  min-height: 200px;
+}
+
+.module-body .chart-info {
+  position: relative;
+  width: 30%;
+  min-height: 200px;
+}
+
+/* Chart module: visual styles */
+.module-body .visual {
+  height: 300px;
+}
+
+.module-body .visual-info {
+  position: relative;
+  height: 20%;
+  display: flex;
+}
+
+.visual-info .sources,
+.visual-info .share {
+  height: 100%;
+}
+
+/* Chart module: info styles */
+.chart-info .chart-text {
+  height: 80%;
+  overview: scroll;
+}
+
+.chart-info .chart-links {
+  height: 20%;
+  overview: scroll;
+}
+

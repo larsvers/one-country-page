@@ -19,6 +19,32 @@ function prepChartData(data) {
     .entries(data);
 }
 
+function buildChartModule(chart) {
+  console.log(chart);
+
+  const html = `
+    <section class="module-head">
+      <h3>${chart.title}</h3>
+      <h4>${chart.subtitle}</h4>
+    </section>
+    <section class="module-body">
+      <div class="visual-wrap">
+        <div class="visual flourish-embed flourish-chart" data-src="visualisation/${chart.id}"></div>
+        <div class="visual-info">
+          <div class="sources"></div>
+          <div class="share"></div>
+        </div>
+      </div>
+      <div class="chart-info">
+        <div class="chart-text"></div>
+        <div class="chart-links"></div>
+      </div>
+    </section>
+  `;
+
+  return html;
+}
+
 function buildContent(data) {
   const nested = prepChartData(data);
 
@@ -36,7 +62,13 @@ function buildContent(data) {
     .data(d => d.values)
     .join('div')
     .attr('class', 'chart-module')
-    .html(d => d.chart);
+    .html(buildChartModule);
+}
+
+function addFlourishEmbedCode() {
+  const script = document.createElement('script');
+  script.src = '//public.flourish.studio/resources/embed.js';
+  document.body.appendChild(script);
 }
 
 function ready(data) {
@@ -47,8 +79,8 @@ function ready(data) {
 
   // Build intro.
   buildIntro(state.country, state.countryLookup.get(state.country).name);
-
   buildContent(chartInfo);
+  addFlourishEmbedCode();
 }
 
 // Load the data
@@ -61,6 +93,3 @@ function load() {
 }
 
 document.body.onload = load;
-
-// Build the sections
-// Build the chart modules
