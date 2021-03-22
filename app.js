@@ -3,6 +3,14 @@ state = {
   countryLookup: null,
 };
 
+function prepChartData(data) {
+  // Change in place.
+  data.forEach(d => {
+    d.links = JSON.parse(d.links);
+    d.sources = JSON.parse(d.sources);
+  });
+}
+
 function buildIntro(iso, country) {
   const html = `
     <h1>${country} <span class="thin">Explorer</span></h1>
@@ -12,7 +20,7 @@ function buildIntro(iso, country) {
   d3.select('#intro').html(html);
 }
 
-function prepChartData(data) {
+function nestChartData(data) {
   return d3
     .nest()
     .key(d => d.topic)
@@ -26,18 +34,46 @@ function buildChartModule(chart) {
     <section class="module-head">
       <h3>${chart.title}</h3>
       <h4>${chart.subtitle}</h4>
+      <hr>
     </section>
     <section class="module-body">
       <div class="visual-wrap">
-        <div class="visual flourish-embed flourish-chart" data-src="visualisation/${chart.id}"></div>
+        <div class="visual">
+          <iframe src='https://flo.uri.sh/visualisation/${
+            chart.id
+          }/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:100%;height:100%;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+        </div>
         <div class="visual-info">
-          <div class="sources"></div>
-          <div class="share"></div>
+          <div class="sources">
+            ${chart.sources
+              .map(
+                (source, i) =>
+                  `${i ? '| ' : 'Sources: '}<a href="${source.url}">${
+                    source.text
+                  }</a>`
+              )
+              .join('')}
+          </div>
+          <div class="share">
+            <a href="#"><img src="images/fb.png"/></a>
+            <a href="#"><img src="images/tw.png"/></a>
+            <a href="#"><img src="images/li.png"/></a>
+            <a href="#"><img src="images/ig.png"/></a>
+          </div>
         </div>
       </div>
       <div class="chart-info">
-        <div class="chart-text"></div>
-        <div class="chart-links"></div>
+        <div class="chart-text-wrap">
+          <div class="chart-text">
+            ${chart.text}
+          </div>
+        </div>
+        <div class="chart-links">
+          See also: </br>
+          ${chart.links
+            .map(link => `<a href="${link.url}">${link.text}</a></br>`)
+            .join('')}
+        </div>
       </div>
     </section>
   `;
@@ -46,7 +82,7 @@ function buildChartModule(chart) {
 }
 
 function buildContent(data) {
-  const nested = prepChartData(data);
+  const nested = nestChartData(data);
 
   const topics = d3
     .select('#container')
@@ -65,22 +101,16 @@ function buildContent(data) {
     .html(buildChartModule);
 }
 
-function addFlourishEmbedCode() {
-  const script = document.createElement('script');
-  script.src = '//public.flourish.studio/resources/embed.js';
-  document.body.appendChild(script);
-}
-
 function ready(data) {
   // Prep data
   const chartInfo = data[0];
+  prepChartData(chartInfo);
   const chartAvail = data[1];
   state.countryLookup = d3.map(data[2], d => d.iso);
 
   // Build intro.
   buildIntro(state.country, state.countryLookup.get(state.country).name);
   buildContent(chartInfo);
-  addFlourishEmbedCode();
 }
 
 // Load the data
