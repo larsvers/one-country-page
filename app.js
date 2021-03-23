@@ -9,6 +9,33 @@ function encodeJSON(input) {
   return encodeURIComponent(JSON.stringify(input));
 }
 
+function getChartHash(chart, iso) {
+  if (!state.dataAvail.get(iso)[chart.name]) {
+    const note = d3.select(`.chart-module#${chart.name} .data-note`);
+    note.select('span').html(state.countryLookup.get(iso).name);
+    note.style('display', 'block');
+    return '';
+  }
+
+  if (chart.type === 'line') {
+    const settings = {
+      series_filter: [iso],
+    };
+    return encodeJSON(settings);
+  }
+  if (chart.type === 'bar') {
+    const settings = {
+      color: {
+        categorical_custom_palette: `${iso}:${chart.bar_colour || 'orange'}`,
+      },
+    };
+    return encodeJSON(settings);
+  }
+
+  throw Error(`Not sure what to do with chartType: ${chart.type}?`);
+}
+
+// Data wrangle.
 function prepChartData(data) {
   // Change in place.
   data.forEach(d => {
@@ -17,6 +44,14 @@ function prepChartData(data) {
   });
 }
 
+function nestChartData(data) {
+  return d3
+    .nest()
+    .key(d => d.topic)
+    .entries(data);
+}
+
+// Build DOM.
 function buildIntro(country) {
   const html = `
     <h1>${country} <span class="thin">Explorer</span></h1>
@@ -24,13 +59,6 @@ function buildIntro(country) {
     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
   `;
   d3.select('#intro').html(html);
-}
-
-function nestChartData(data) {
-  return d3
-    .nest()
-    .key(d => d.topic)
-    .entries(data);
 }
 
 function buildChartModuleBase() {
@@ -76,32 +104,6 @@ function buildChartModuleBase() {
   `;
 }
 
-function getChartHash(chart, iso) {
-  if (!state.dataAvail.get(iso)[chart.chart]) {
-    const note = d3.select(`.chart-module#${chart.chart} .data-note`);
-    note.select('span').html(state.countryLookup.get(iso).name);
-    note.style('display', 'block');
-    return '';
-  }
-
-  if (chart.type === 'line') {
-    const settings = {
-      series_filter: [iso],
-    };
-    return encodeJSON(settings);
-  }
-  if (chart.type === 'bar') {
-    const settings = {
-      color: {
-        categorical_custom_palette: `${iso}:${chart.bar_colour || 'orange'}`,
-      },
-    };
-    return encodeJSON(settings);
-  }
-
-  throw Error(`Not sure what to do with chartType: ${chart.type}?`);
-}
-
 function buildContent(data) {
   const nested = nestChartData(data);
 
@@ -121,7 +123,7 @@ function buildContent(data) {
     .data(d => d.values)
     .join('div')
     .attr('class', 'chart-module')
-    .attr('id', d => d.chart)
+    .attr('id', d => d.name)
     .html(buildChartModuleBase);
 
   // Head.
@@ -157,6 +159,7 @@ function buildContent(data) {
     .html(dd => dd.text);
 }
 
+// Main function.
 function ready(data) {
   // Prep data
   const chartInfo = data[0];
