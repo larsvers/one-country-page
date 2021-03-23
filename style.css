@@ -79,6 +79,13 @@ span.thin {
   border: 1px dotted #ccc;
 }
 
+.module-head .data-note {
+  font-size: 0.8em;
+  font-weight: 300;
+  color: #777;
+  display: none;
+}
+
 /* Chart module body parent */
 .module-body {
   display: flex;

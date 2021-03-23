@@ -1,7 +1,13 @@
 const state = {
-  country: 'MAR',
+  country: 'EGY',
+  dataAvail: null,
   countryLookup: null,
 };
+
+// Helpers
+function encodeJSON(input) {
+  return encodeURIComponent(JSON.stringify(input));
+}
 
 function prepChartData(data) {
   // Change in place.
@@ -11,7 +17,7 @@ function prepChartData(data) {
   });
 }
 
-function buildIntro(iso, country) {
+function buildIntro(country) {
   const html = `
     <h1>${country} <span class="thin">Explorer</span></h1>
     <h2>Explore country specific information</h2>
@@ -32,6 +38,7 @@ function buildChartModuleBase() {
     <section class="module-head">
       <h3></h3>
       <h4></h4>
+      <div class="data-note">Sorry, there's no data for <span></span>, but have a look at these other countries ↓</div>
       <hr>
     </section>
 
@@ -69,21 +76,30 @@ function buildChartModuleBase() {
   `;
 }
 
-function getChartHash(chartType, iso, barCol) {
-  if (chartType === 'line') {
+function getChartHash(chart, iso) {
+  if (!state.dataAvail.get(iso)[chart.chart]) {
+    const note = d3.select(`.chart-module#${chart.chart} .data-note`);
+    note.select('span').html(state.countryLookup.get(iso).name);
+    note.style('display', 'block');
+    return '';
+  }
+
+  if (chart.type === 'line') {
     const settings = {
       series_filter: [iso],
     };
-    return encodeURIComponent(JSON.stringify(settings));
+    return encodeJSON(settings);
   }
-  if (chartType === 'bar') {
+  if (chart.type === 'bar') {
     const settings = {
       color: {
-        categorical_custom_palette: `${iso}:${barCol || 'orange'}`,
+        categorical_custom_palette: `${iso}:${chart.bar_colour || 'orange'}`,
       },
     };
-    return encodeURIComponent(JSON.stringify(settings));
+    return encodeJSON(settings);
   }
+
+  throw Error(`Not sure what to do with chartType: ${chart.type}?`);
 }
 
 function buildContent(data) {
@@ -105,6 +121,7 @@ function buildContent(data) {
     .data(d => d.values)
     .join('div')
     .attr('class', 'chart-module')
+    .attr('id', d => d.chart)
     .html(buildChartModuleBase);
 
   // Head.
@@ -113,7 +130,7 @@ function buildContent(data) {
 
   // Chart.
   module.select('.visual iframe').attr('src', d => {
-    const hash = getChartHash(d.type, state.country, d.bar_colour);
+    const hash = getChartHash(d, state.country);
     const src = `https://flo.uri.sh/visualisation/${d.id}/embed#${hash}`;
     return src;
   });
@@ -144,11 +161,11 @@ function ready(data) {
   // Prep data
   const chartInfo = data[0];
   prepChartData(chartInfo);
-  const chartAvail = data[1];
+  state.dataAvail = d3.map(data[1], d => d.iso);
   state.countryLookup = d3.map(data[2], d => d.iso);
 
   // Build intro.
-  buildIntro(state.country, state.countryLookup.get(state.country).name);
+  buildIntro(state.countryLookup.get(state.country).name);
   buildContent(chartInfo);
 }
 
