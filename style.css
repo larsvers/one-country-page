@@ -1,3 +1,9 @@
+/* Debug */
+#container {
+  border: 1px dotted #ccc;
+}
+
+/* General */
 body * {
   box-sizing: border-box;
   font-family: "Open Sans";
@@ -40,7 +46,6 @@ span.thin {
     }
 }
 
-
 /* Main Layout */
 #intro h1 {
   margin-bottom: 0.1rem;
@@ -58,11 +63,7 @@ span.thin {
   border: 1px solid;
 }
 
-#container {
-  border: 1px dotted #ccc;
-}
-
-/* Chart module styles */
+/* Chart module head */
 .module-head h3 {
   margin-bottom: 0.5rem;
 }
@@ -77,81 +78,60 @@ span.thin {
 }
 
 .module-body div {
-  /* border: 1px dotted #aaa; */
+  border: 1px dotted #aaa;
 }
 
+/* Chart module body parent */
 .module-body {
-  position: relative;
   display: flex;
-  height: 400px;
+  flex-direction: column;
 }
 
+/* Chart module body 1st children */
 .module-body .visual-wrap {
   position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+}
+
+.module-body .info-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+/* Visual */
+.visual-wrap .visual {
   width: 70%;
+  height: 100%;
 }
 
-.module-body .chart-info {
-  position: relative;
+.visual-wrap .visual-text {
   width: 30%;
+  height: 100%;
 }
 
-/* Chart module: visual styles */
-.module-body .visual {
-  height: 80%;
-}
+/* Info space */
+.info-wrap .chart-info {
+  width: 70%;
 
-.module-body .visual-info {
   position: relative;
-  height: 20%;
   display: flex;
   justify-content: space-between;
 }
 
-.visual-info .sources,
-.visual-info .share {
-  height: 100%;
+.info-wrap .chart-links {
+  width: 30%; /* not done yet */
+}
+
+/* Sources and Share */
+.chart-info .sources,
+.chart-info .share {
   max-width: 50%;
   overflow: auto;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
 }
-
-/* Chart module: info styles */
-.chart-info .chart-text-wrap {
-  position: relative;
-  height: 80%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.chart-text {
-  width: 90%;
-  height: 90%;
-  overflow: auto;
-}
-
-.chart-info .chart-links {
-  height: 20%;
-  overflow: auto;
-}
-
-.chart-links {
-  font-size: 0.8em;
-  font-weight: 100;
-  padding: 5%;
-}
-
-/* Chart module: further info styles */
-.sources {
-  font-size: 0.8em;
-  font-weight: 100;
-}
-
-.share {
-  display: flex;
-} 
 
 .share img {
   display: inline-block;
@@ -159,3 +139,7 @@ span.thin {
   margin: 0 0.5rem;
   opacity: 0.3;
 }
+
+/* Links */
+
+

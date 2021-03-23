@@ -81,6 +81,54 @@ function buildChartModule(chart) {
   return html;
 }
 
+function buildModuleHead(chart) {
+  return `
+    <h3>${chart.title}</h3>
+    <h4>${chart.subtitle}</h4>
+    <hr>
+  `;
+}
+
+function buildChartModuleBase() {
+  return `
+    <section class="module-head">
+      <h3></h3>
+      <h4></h4>
+      <hr>
+    </section>
+
+    <section class="module-body">
+
+      <div class="visual-wrap">
+
+        <div class="visual"></div>
+        <div class="visual-text"></div>
+    
+      </div>
+  
+      <div class="info-wrap">
+
+        <div class="chart-info">
+          <div class="sources"></div>
+          <div class="share">
+            <a href="#"><img src="images/fb.png"/></a>
+            <a href="#"><img src="images/tw.png"/></a>
+            <a href="#"><img src="images/li.png"/></a>
+            <a href="#"><img src="images/ig.png"/></a>
+          </div>
+        </div>
+
+        <div class="chart-links">
+          <div class="prompt">See also:</div>
+          <div class="links"></div>
+        </div>
+
+      </div>
+
+    </section>
+  `;
+}
+
 function buildContent(data) {
   const nested = nestChartData(data);
 
@@ -93,12 +141,12 @@ function buildContent(data) {
 
   topics.append('h3').html(d => d.key);
 
-  topics
+  const chartModule = topics
     .selectAll('chart-module')
     .data(d => d.values)
     .join('div')
     .attr('class', 'chart-module')
-    .html(buildChartModule);
+    .html(buildChartModuleBase);
 }
 
 function ready(data) {
