@@ -1,6 +1,7 @@
 /* Debug */
-#container {
-  border: 1px dotted #ccc;
+#container,
+.module-body div {
+  /* border: 1px dotted #ccc; */
 }
 
 /* General */
@@ -22,6 +23,7 @@ span.thin {
   margin: auto;
 }
 
+/* Media queries app width */
 @media (min-width: 900px) {
   #app {
       width: 80vw;
@@ -77,10 +79,6 @@ span.thin {
   border: 1px dotted #ccc;
 }
 
-.module-body div {
-  border: 1px dotted #aaa;
-}
-
 /* Chart module body parent */
 .module-body {
   display: flex;
@@ -91,38 +89,46 @@ span.thin {
 .module-body .visual-wrap {
   position: relative;
   width: 100%;
-  height: 300px;
   display: flex;
+  flex-direction: column;
 }
 
 .module-body .info-wrap {
   position: relative;
   width: 100%;
   display: flex;
+  flex-direction: column;
+}
+
+.top {
+  height: auto; /* mobile */
+  margin-bottom: 1rem;
+}
+
+.left, .right {
+  width: 100%;
+}
+
+.left {
+  margin-right: 1rem;
 }
 
 /* Visual */
 .visual-wrap .visual {
-  width: 70%;
-  height: 100%;
+  height: 400px;
 }
 
 .visual-wrap .visual-text {
-  width: 30%;
-  height: 100%;
+  height: auto;
+  overflow: auto;
 }
 
 /* Info space */
 .info-wrap .chart-info {
-  width: 70%;
 
   position: relative;
   display: flex;
   justify-content: space-between;
-}
-
-.info-wrap .chart-links {
-  width: 30%; /* not done yet */
 }
 
 /* Sources and Share */
@@ -133,6 +139,12 @@ span.thin {
   /* padding: 1rem 0; */
 }
 
+.sources,
+.chart-links {
+  font-size: 0.8em;
+  font-weight: 100;
+}
+
 .share img {
   display: inline-block;
   width: 24px;
@@ -140,6 +152,34 @@ span.thin {
   opacity: 0.3;
 }
 
-/* Links */
+.chart-links a {
+  display: block;
+}
 
+/* Media queries elements */
+@media (min-width: 700px) {
+  .module-body .visual-wrap {
+    flex-direction: row;
+  }
+  
+  .module-body .info-wrap {
+    flex-direction: row;
+  }
 
+  .left {
+    width: 70%;
+  }
+  
+  .right {
+    width: 30%;
+  }
+
+  .top {
+    height: 300px;
+  }
+
+  .visual-wrap .visual, 
+  .visual-wrap .visual-text {
+    height: 100%;
+  }
+}

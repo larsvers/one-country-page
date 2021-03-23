@@ -27,68 +27,6 @@ function nestChartData(data) {
     .entries(data);
 }
 
-function buildChartModule(chart) {
-  console.log(chart);
-
-  const html = `
-    <section class="module-head">
-      <h3>${chart.title}</h3>
-      <h4>${chart.subtitle}</h4>
-      <hr>
-    </section>
-    <section class="module-body">
-      <div class="visual-wrap">
-        <div class="visual">
-          <iframe src='https://flo.uri.sh/visualisation/${
-            chart.id
-          }/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:100%;height:100%;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
-        </div>
-        <div class="visual-info">
-          <div class="sources">
-            ${chart.sources
-              .map(
-                (source, i) =>
-                  `${i ? '| ' : 'Sources: '}<a href="${source.url}">${
-                    source.text
-                  }</a>`
-              )
-              .join('')}
-          </div>
-          <div class="share">
-            <a href="#"><img src="images/fb.png"/></a>
-            <a href="#"><img src="images/tw.png"/></a>
-            <a href="#"><img src="images/li.png"/></a>
-            <a href="#"><img src="images/ig.png"/></a>
-          </div>
-        </div>
-      </div>
-      <div class="chart-info">
-        <div class="chart-text-wrap">
-          <div class="chart-text">
-            ${chart.text}
-          </div>
-        </div>
-        <div class="chart-links">
-          See also: </br>
-          ${chart.links
-            .map(link => `<a href="${link.url}">${link.text}</a></br>`)
-            .join('')}
-        </div>
-      </div>
-    </section>
-  `;
-
-  return html;
-}
-
-function buildModuleHead(chart) {
-  return `
-    <h3>${chart.title}</h3>
-    <h4>${chart.subtitle}</h4>
-    <hr>
-  `;
-}
-
 function buildChartModuleBase() {
   return `
     <section class="module-head">
@@ -99,16 +37,18 @@ function buildChartModuleBase() {
 
     <section class="module-body">
 
-      <div class="visual-wrap">
+      <div class="visual-wrap top">
 
-        <div class="visual"></div>
-        <div class="visual-text"></div>
+        <div class="visual left">
+          <iframe src='' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:100%;height:100%;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+        </div>
+        <div class="visual-text right"></div>
     
       </div>
   
-      <div class="info-wrap">
+      <div class="info-wrap bottom">
 
-        <div class="chart-info">
+        <div class="chart-info left">
           <div class="sources"></div>
           <div class="share">
             <a href="#"><img src="images/fb.png"/></a>
@@ -118,7 +58,7 @@ function buildChartModuleBase() {
           </div>
         </div>
 
-        <div class="chart-links">
+        <div class="chart-links right">
           <div class="prompt">See also:</div>
           <div class="links"></div>
         </div>
@@ -132,6 +72,7 @@ function buildChartModuleBase() {
 function buildContent(data) {
   const nested = nestChartData(data);
 
+  // Topics.
   const topics = d3
     .select('#container')
     .selectAll('.topic')
@@ -141,12 +82,44 @@ function buildContent(data) {
 
   topics.append('h3').html(d => d.key);
 
-  const chartModule = topics
+  // Chart module.
+  const module = topics
     .selectAll('chart-module')
     .data(d => d.values)
     .join('div')
     .attr('class', 'chart-module')
     .html(buildChartModuleBase);
+
+  // Head.
+  module.select('.module-head h3').html(d => d.title);
+  module.select('.module-head h4').html(d => d.subtitle);
+
+  // Chart.
+  module.select('.visual iframe').attr('src', d => {
+    const src = `https://flo.uri.sh/visualisation/${d.id}/embed`;
+    return src;
+  });
+
+  module.select('.visual-text').html(d => d.text);
+
+  // Info sources.
+  module
+    .select('.sources')
+    .html(d =>
+      d.sources.map(
+        (source, i) =>
+          `${i ? '| ' : 'Sources: '}<a href="${source.url}">${source.text}</a>`
+      )
+    );
+
+  // Info links.
+  module
+    .select('.chart-links .links')
+    .selectAll('.link')
+    .data(d => d.links)
+    .join('a')
+    .attr('href', dd => dd.url)
+    .html(dd => dd.text);
 }
 
 function ready(data) {
