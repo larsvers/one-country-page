@@ -1,4 +1,4 @@
-state = {
+const state = {
   country: 'MAR',
   countryLookup: null,
 };
@@ -69,6 +69,23 @@ function buildChartModuleBase() {
   `;
 }
 
+function getChartHash(chartType, iso, barCol) {
+  if (chartType === 'line') {
+    const settings = {
+      series_filter: [iso],
+    };
+    return encodeURIComponent(JSON.stringify(settings));
+  }
+  if (chartType === 'bar') {
+    const settings = {
+      color: {
+        categorical_custom_palette: `${iso}:${barCol || 'orange'}`,
+      },
+    };
+    return encodeURIComponent(JSON.stringify(settings));
+  }
+}
+
 function buildContent(data) {
   const nested = nestChartData(data);
 
@@ -96,7 +113,8 @@ function buildContent(data) {
 
   // Chart.
   module.select('.visual iframe').attr('src', d => {
-    const src = `https://flo.uri.sh/visualisation/${d.id}/embed`;
+    const hash = getChartHash(d.type, state.country, d.bar_colour);
+    const src = `https://flo.uri.sh/visualisation/${d.id}/embed#${hash}`;
     return src;
   });
 
