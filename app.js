@@ -54,7 +54,7 @@ function nestChartData(data) {
 // Build DOM.
 function buildIntro(country) {
   const html = `
-    <h1>${country} <span class="thin">Explorer</span></h1>
+    <h1><span class="country">${country}</span> <span class="thin">Explorer</span></h1>
     <h2>Explore country specific information</h2>
     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
   `;
@@ -167,7 +167,11 @@ function ready(data) {
   state.dataAvail = d3.map(data[1], d => d.iso);
   state.countryLookup = d3.map(data[2], d => d.iso);
 
-  // Build intro.
+  // Set country.
+  const u = new URL(location);
+  state.country = u.searchParams.get('country') || 'EGY';
+
+  // Build.
   buildIntro(state.countryLookup.get(state.country).name);
   buildContent(chartInfo);
 }
