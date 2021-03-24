@@ -170,6 +170,7 @@ function ready(data) {
   // Set country.
   const u = new URL(location);
   state.country = u.searchParams.get('country') || 'EGY';
+  d3.select('title').html(state.countryLookup.get(state.country).name);
 
   // Build.
   buildIntro(state.countryLookup.get(state.country).name);
