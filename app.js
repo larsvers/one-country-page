@@ -116,6 +116,10 @@ function buildContent(data) {
     .attr('class', 'topic');
 
   topics.append('h3').html(d => d.key);
+  topics
+    .append('div')
+    .attr('class', 'topic-intro')
+    .html(d => d.values[0].topic_intro);
 
   // Chart module.
   const module = topics
@@ -180,15 +184,15 @@ function ready(data) {
 // Load the data
 function load() {
   // // Local.
-  // const charts = d3.csv('data/country-data.csv', d3.autoType);
+  const charts = d3.csv('data/country-data.csv', d3.autoType);
   // const availability = d3.csv('data/data-availability.csv', d3.autoType);
   // const countryLookup = d3.csv('data/country-lookup.csv', d3.autoType);
 
   // GitHub.
-  const charts = d3.csv(
-    'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-data.csv',
-    d3.autoType
-  );
+  // const charts = d3.csv(
+  //   'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-data.csv',
+  //   d3.autoType
+  // );
   const availability = d3.csv(
     'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/data-availability.csv',
     d3.autoType
