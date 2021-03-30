@@ -126,12 +126,7 @@ span.thin {
 }
 
 /* Visual */
-.visual-wrap .visual {
-  height: 400px;
-}
-
 .visual-wrap .visual-text {
-  height: auto;
   overflow: auto;
 }
 
@@ -184,14 +179,5 @@ span.thin {
   
   .right {
     width: 30%;
-  }
-
-  .top {
-    height: 300px;
-  }
-
-  .visual-wrap .visual, 
-  .visual-wrap .visual-text {
-    height: 100%;
   }
 }

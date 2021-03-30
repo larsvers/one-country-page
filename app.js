@@ -2,9 +2,15 @@ const state = {
   country: 'EGY',
   dataAvail: null,
   countryLookup: null,
+  chartHeight: 350,
+  mobileBreakpoint: 700,
 };
 
 // Helpers
+function isMobile() {
+  return window.innerWidth < state.mobileBreakpoint;
+}
+
 function encodeJSON(input) {
   return encodeURIComponent(JSON.stringify(input));
 }
@@ -35,12 +41,27 @@ function getChartHash(chart, iso) {
   throw Error(`Not sure what to do with chartType: ${chart.type}?`);
 }
 
+function setVisualHeight(parent, isMobile) {
+  parent
+    .select('.visual')
+    .style('height', d => {
+      return !isMobile ? 'auto' : `${d.height_factor * state.chartHeight}px`;
+    })
+
+  parent
+    .select('.top')
+    .style('height', d => {
+      return isMobile ? 'auto' : `${d.height_factor * state.chartHeight}px`;
+    })
+}
+
 // Data wrangle.
 function prepChartData(data) {
   // Change in place.
   data.forEach(d => {
     d.links = JSON.parse(d.links);
     d.sources = JSON.parse(d.sources);
+    d.height_factor = d.height_factor || 1;
   });
 }
 
@@ -129,7 +150,7 @@ function buildContent(data) {
     .attr('class', 'chart-module')
     .attr('id', d => d.name)
     .html(buildChartModuleBase);
-
+  
   // Head.
   module.select('.module-head h3').html(d => d.title);
   module.select('.module-head h4').html(d => d.subtitle);
@@ -142,6 +163,8 @@ function buildContent(data) {
   });
 
   module.select('.visual-text').html(d => d.text);
+
+  setVisualHeight(module, isMobile());
 
   // Info sources.
   module
@@ -179,20 +202,25 @@ function ready(data) {
   // Build.
   buildIntro(state.countryLookup.get(state.country).name);
   buildContent(chartInfo);
+
+  // Update height.
+  window.addEventListener('resize', () => {
+    setVisualHeight(d3.selectAll('.chart-module'), isMobile())
+  })
 }
 
 // Load the data
 function load() {
   // // Local.
-  // const charts = d3.csv('data/country-data.csv', d3.autoType);
+  const charts = d3.csv('data/country-data.csv', d3.autoType);
   // const availability = d3.csv('data/data-availability.csv', d3.autoType);
   // const countryLookup = d3.csv('data/country-lookup.csv', d3.autoType);
 
   // GitHub.
-  const charts = d3.csv(
-    'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-data.csv',
-    d3.autoType
-  );
+  // const charts = d3.csv(
+  //   'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-data.csv',
+  //   d3.autoType
+  // );
   const availability = d3.csv(
     'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/data-availability.csv',
     d3.autoType
