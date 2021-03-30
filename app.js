@@ -145,7 +145,8 @@ function buildContent(data) {
     .selectAll('.topic')
     .data(nested)
     .join('div')
-    .attr('class', 'topic');
+    .attr('class', 'topic')
+    .attr('id', d => d.values[0].topic_id);
 
   topics.append('h3').html(d => d.key);
   topics
@@ -193,6 +194,7 @@ function buildContent(data) {
     .selectAll('.link')
     .data(d => d.links)
     .join('a')
+    .attr('class', 'link')
     .attr('href', dd => dd.url)
     .html(dd => dd.text);
 }

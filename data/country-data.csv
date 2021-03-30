@@ -1,5 +1,5 @@
-﻿name,chart_index,topic,topic_index,topic_intro,title,subtitle,text,sources,links,id,type,bar_colour,height_factor
-covid-base-data-latest,0,COVID-19 Impacts,0,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",Covid latest ,Most recent snapshot,"Lorem ipsum dolor sit amet, <a href=""https://www.one.org"">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
+﻿name,chart_index,topic,topic_id,topic_index,topic_intro,title,subtitle,text,sources,links,id,type,bar_colour,height_factor
+covid-base-data-latest,0,COVID-19 Impacts,covid-19-impacts,0,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",Covid latest ,Most recent snapshot,"Lorem ipsum dolor sit amet, <a href=""https://www.one.org"">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
   {
     ""text"": ""NYT"",
     ""url"": ""https://www.nytimes.com/interactive/2020/world/coronavirus-maps.html""
@@ -8,17 +8,8 @@ covid-base-data-latest,0,COVID-19 Impacts,0,"Lorem ipsum dolor sit amet, consect
     ""text"": ""Johns Hopkins"",
     ""url"": ""https://coronavirus.jhu.edu/map.html""
   }
-]","[
-  {
-    ""text"": ""Africa explorer"",
-    ""url"": ""https://www.one.org/africa/about/policy-analysis/covid-19-tracker/""
-  },
-  {
-    ""text"": ""Read more here"",
-    ""url"": ""https://www.one.org/""
-  }
-]",5715864,bar,tomato,1.75
-covid-base-data-time,1,COVID-19 Impacts,0,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",Covid developments,Timelines of key covid indicators,"Lorem ipsum dolor sit amet, <a href=""https://www.one.org"">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
+]","[{""text"": ""Africa Blacksplorer"", ""url"": ""https://www.one.org/africa/about/policy-analysis/covid-19-tracker/""}, {""text"": ""Read more here"", ""url"": ""https://www.one.org/""}]",5715864,bar,tomato,1.75
+covid-base-data-time,1,COVID-19 Impacts,covid-19-impacts,0,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",Covid developments,Timelines of key covid indicators,"Lorem ipsum dolor sit amet, <a href=""https://www.one.org"">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
   {
     ""text"": ""WHO"",
     ""url"": ""https://www.who.int/initiatives/act-accelerator/covax""
@@ -37,7 +28,7 @@ covid-base-data-time,1,COVID-19 Impacts,0,"Lorem ipsum dolor sit amet, consectet
     ""url"": ""https://www.one.org/""
   }
 ]",5638456,line,,
-life-expectancy,2,Sociodemographic indicators,1,"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",Life expectancy at birth,By country,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
+life-expectancy,2,Sociodemographic indicators,sociodemographic-indicators,1,"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",Life expectancy at birth,By country,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
   {
     ""text"": ""NYT"",
     ""url"": ""https://www.nytimes.com/interactive/2020/world/coronavirus-maps.html""
@@ -56,7 +47,7 @@ life-expectancy,2,Sociodemographic indicators,1,"Duis aute irure dolor in repreh
     ""url"": ""https://www.one.org/""
   }
 ]",5638792,line,,
-remittances-latest,3,Sociodemographic indicators,1,"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",Remittances,Latest,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
+remittances-latest,3,Sociodemographic indicators,sociodemographic-indicators,1,"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",Remittances,Latest,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","[
   {
     ""text"": ""WHO"",
     ""url"": ""https://www.who.int/initiatives/act-accelerator/covax""
