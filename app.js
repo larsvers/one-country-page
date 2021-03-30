@@ -1,7 +1,7 @@
 const state = {
   country: 'EGY',
   dataAvail: null,
-  countryLookup: null,
+  isoToName: null,
   chartHeight: 350,
   mobileBreakpoint: 700,
 };
@@ -16,29 +16,36 @@ function encodeJSON(input) {
 }
 
 function getChartHash(chart, iso) {
+  // Show/hide no-data note.
   if (!state.dataAvail.get(iso)[chart.name]) {
     const note = d3.select(`.chart-module#${chart.name} .data-note`);
-    note.select('span').html(state.countryLookup.get(iso).name);
+    note.select('span').html(state.isoToName.get(iso).name);
     note.style('display', 'block');
     return '';
   }
 
+  // Get country name.
+  const countryName = state.isoToName.get(iso)
+    ? state.isoToName.get(iso).name
+    : '';
+
+  // Set settings with given country name.
   if (chart.type === 'line') {
     const settings = {
-      series_filter: [iso],
+      series_filter: [countryName],
     };
     return encodeJSON(settings);
   }
   if (chart.type === 'bar') {
     const settings = {
       color: {
-        categorical_custom_palette: `${iso}:${chart.bar_colour || 'orange'}`,
+        categorical_custom_palette: `${countryName}:${chart.bar_colour || 'orange'}`,
       },
     };
     return encodeJSON(settings);
   }
 
-  throw Error(`Not sure what to do with chartType: ${chart.type}?`);
+  throw Error(`Not sure what to do with chartType: ${chart.type}? Should be "bar" or "line".`);
 }
 
 function setVisualHeight(parent, isMobile) {
@@ -192,15 +199,15 @@ function ready(data) {
   const chartInfo = data[0];
   prepChartData(chartInfo);
   state.dataAvail = d3.map(data[1], d => d.iso);
-  state.countryLookup = d3.map(data[2], d => d.iso);
+  state.isoToName = d3.map(data[2], d => d.iso);
 
   // Set country.
   const u = new URL(location);
   state.country = u.searchParams.get('country') || 'EGY';
-  d3.select('title').html(state.countryLookup.get(state.country).name);
+  d3.select('title').html(state.isoToName.get(state.country).name);
 
   // Build.
-  buildIntro(state.countryLookup.get(state.country).name);
+  buildIntro(state.isoToName.get(state.country).name);
   buildContent(chartInfo);
 
   // Update height.
