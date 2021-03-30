@@ -1,9 +1,3 @@
-/* Debug */
-#container,
-.module-body div {
-  /* border: 1px dotted #ccc; */
-}
-
 /* General */
 body * {
   box-sizing: border-box;

@@ -39,27 +39,31 @@ function getChartHash(chart, iso) {
   if (chart.type === 'bar') {
     const settings = {
       color: {
-        categorical_custom_palette: `${countryName}:${chart.bar_colour || 'orange'}`,
+        categorical_custom_palette: `${countryName}:${
+          chart.bar_colour || 'orange'
+        }`,
       },
     };
     return encodeJSON(settings);
   }
 
-  throw Error(`Not sure what to do with chartType: ${chart.type}? Should be "bar" or "line".`);
+  throw Error(
+    `Not sure what to do with chartType: ${chart.type}? Should be "bar" or "line".`
+  );
 }
 
-function setVisualHeight(parent, isMobile) {
+function setVisualHeight(parent, mobile) {
   parent
     .select('.visual')
-    .style('height', d => {
-      return !isMobile ? 'auto' : `${d.height_factor * state.chartHeight}px`;
-    })
+    .style('height', d =>
+      !mobile ? 'auto' : `${d.height_factor * state.chartHeight}px`
+    );
 
   parent
     .select('.top')
-    .style('height', d => {
-      return isMobile ? 'auto' : `${d.height_factor * state.chartHeight}px`;
-    })
+    .style('height', d =>
+      mobile ? 'auto' : `${d.height_factor * state.chartHeight}px`
+    );
 }
 
 // Data wrangle.
@@ -157,7 +161,7 @@ function buildContent(data) {
     .attr('class', 'chart-module')
     .attr('id', d => d.name)
     .html(buildChartModuleBase);
-  
+
   // Head.
   module.select('.module-head h3').html(d => d.title);
   module.select('.module-head h4').html(d => d.subtitle);
@@ -202,7 +206,7 @@ function ready(data) {
   state.isoToName = d3.map(data[2], d => d.iso);
 
   // Set country.
-  const u = new URL(location);
+  const u = new URL(window.location);
   state.country = u.searchParams.get('country') || 'EGY';
   d3.select('title').html(state.isoToName.get(state.country).name);
 
@@ -212,8 +216,8 @@ function ready(data) {
 
   // Update height.
   window.addEventListener('resize', () => {
-    setVisualHeight(d3.selectAll('.chart-module'), isMobile())
-  })
+    setVisualHeight(d3.selectAll('.chart-module'), isMobile());
+  });
 }
 
 // Load the data
