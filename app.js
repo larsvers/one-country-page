@@ -213,7 +213,7 @@ function ready(data) {
   d3.select('title').html(state.isoToName.get(state.country).name);
 
   // Build.
-  buildIntro(state.isoToName.get(state.country).name);
+  buildIntro(state.isoToName.get(state.country).long_name);
   buildContent(chartInfo);
 
   // Update height.

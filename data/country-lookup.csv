@@ -1,56 +1,221 @@
-﻿iso,name
-AGO,Angola
-BDI,Burundi
-BEN,Benin
-BFA,Burkina Faso
-BWA,Botswana
-CAF,Central African Republic
-CIV,Côte d'Ivoire
-CMR,Cameroon
-COD,Congo (DRC)
-COG,Congo
-COM,Comoros
-CPV,Cabo Verde
-DJI,Djibouti
-DZA,Algeria
-EGY,Egypt
-ERI,Eritrea
-ETH,Ethiopia
-GAB,Gabon
-GHA,Ghana
-GIN,Guinea
-GMB,Gambia
-GNB,Guinea-Bissau
-GNQ,Equatorial Guinea
-KEN,Kenya
-LBR,Liberia
-LBY,Libya
-LSO,Lesotho
-MAR,Morocco
-MDG,Madagascar
-MEA,Middle East and Africa
-MLI,Mali
-MOZ,Mozambique
-MRT,Mauritania
-MUS,Mauritius
-MWI,Malawi
-NAM,Namibia
-NER,Niger (the)
-NGA,Nigeria
-RWA,Rwanda
-SDN,Sudan
-SEN,Senegal
-SLE,Sierra Leone
-SOM,Somalia
-SSD,South Sudan
-STP,Sao Tome and Principe
-SWZ,Eswatini
-SYC,Seychelles
-TCD,Chad
-TGO,Togo
-TUN,Tunisia
-TZA,"Tanzania, United Republic of"
-UGA,Uganda
-ZAF,South Africa
-ZMB,Zambia
-ZWE,Zimbabwe
+﻿iso,name,long_name
+ABW,Aruba,Aruba
+AFG,Afghanistan,Afghanistan
+AGO,Angola,Angola
+AIA,Anguilla,Anguilla
+ALB,Albania,Albania
+AND,Andorra,Andorra
+ARE,U.A.E,United Arab Emirates
+ARG,Argentina,Argentina
+ARM,Armenia,Armenia
+ATG,Antigua and Barbuda,Antigua and Barbuda
+AUS,Australia,Australia
+AUT,Austria,Austria
+AZE,Azerbaijan,Azerbaijan
+BDI,Burundi,Burundi
+BEL,Belgium,Belgium
+BEN,Benin,Benin
+BES,Bonaire Sint Eustatius and Saba,Bonaire Sint Eustatius and Saba
+BFA,Burkina Faso,Burkina Faso
+BGD,Bangladesh,Bangladesh
+BGR,Bulgaria,Bulgaria
+BHR,Bahrain,Bahrain
+BHS,Bahamas,Bahamas
+BIH,Bosnia and Herzegovina,Bosnia and Herzegovina
+BLR,Belarus,Belarus
+BLZ,Belize,Belize
+BMU,Bermuda,Bermuda
+BOL,Bolivia,Bolivia
+BRA,Brazil,Brazil
+BRB,Barbados,Barbados
+BRN,Brunei,Brunei
+BTN,Bhutan,Bhutan
+BWA,Botswana,Botswana
+CAF,C.A.R,Central African Republic
+CAN,Canada,Canada
+CHE,Switzerland,Switzerland
+CHL,Chile,Chile
+CHN,China,China
+CIV,Cote d'Ivoire,Cote d'Ivoire
+CMR,Cameroon,Cameroon
+COD,D.R.C,Democratic Republic of Congo
+COG,Congo,Congo
+COL,Colombia,Colombia
+COM,Comoros,Comoros
+CPV,Cape Verde,Cape Verde
+CRI,Costa Rica,Costa Rica
+CUB,Cuba,Cuba
+CUW,Curacao,Curacao
+CYM,Cayman Islands,Cayman Islands
+CYP,Cyprus,Cyprus
+CZE,Czech Republic,Czech Republic
+DEU,Germany,Germany
+DJI,Djibouti,Djibouti
+DMA,Dominica,Dominica
+DNK,Denmark,Denmark
+DOM,Dominican Republic,Dominican Republic
+DZA,Algeria,Algeria
+ECU,Ecuador,Ecuador
+EGY,Egypt,Egypt
+ERI,Eritrea,Eritrea
+ESH,Western Sahara,Western Sahara
+ESP,Spain,Spain
+EST,Estonia,Estonia
+ETH,Ethiopia,Ethiopia
+FIN,Finland,Finland
+FJI,Fiji,Fiji
+FLK,Falkland Islands,Falkland Islands
+FRA,France,France
+FRO,Faeroe Islands,Faeroe Islands
+GAB,Gabon,Gabon
+GBR,United Kingdom,United Kingdom
+GEO,Georgia,Georgia
+GGY,Guernsey,Guernsey
+GHA,Ghana,Ghana
+GIB,Gibraltar,Gibraltar
+GIN,Guinea,Guinea
+GMB,Gambia,Gambia
+GNB,Guinea-Bissau,Guinea-Bissau
+GNQ,Equatorial Guinea,Equatorial Guinea
+GRC,Greece,Greece
+GRD,Grenada,Grenada
+GRL,Greenland,Greenland
+GTM,Guatemala,Guatemala
+GUM,Guam,Guam
+GUY,Guyana,Guyana
+HKG,Hong Kong,Hong Kong
+HND,Honduras,Honduras
+HRV,Croatia,Croatia
+HTI,Haiti,Haiti
+HUN,Hungary,Hungary
+IDN,Indonesia,Indonesia
+IMN,Isle of Man,Isle of Man
+IND,India,India
+IRL,Ireland,Ireland
+IRN,Iran,Iran
+IRQ,Iraq,Iraq
+ISL,Iceland,Iceland
+ISR,Israel,Israel
+ITA,Italy,Italy
+JAM,Jamaica,Jamaica
+JEY,Jersey,Jersey
+JOR,Jordan,Jordan
+JPN,Japan,Japan
+KAZ,Kazakhstan,Kazakhstan
+KEN,Kenya,Kenya
+KGZ,Kyrgyzstan,Kyrgyzstan
+KHM,Cambodia,Cambodia
+KNA,Saint Kitts and Nevis,Saint Kitts and Nevis
+KOR,South Korea,South Korea
+KWT,Kuwait,Kuwait
+LAO,Laos,Laos
+LBN,Lebanon,Lebanon
+LBR,Liberia,Liberia
+LBY,Libya,Libya
+LCA,Saint Lucia,Saint Lucia
+LIE,Liechtenstein,Liechtenstein
+LKA,Sri Lanka,Sri Lanka
+LTU,Lithuania,Lithuania
+LUX,Luxembourg,Luxembourg
+LVA,Latvia,Latvia
+MAR,Morocco,Morocco
+MCO,Monaco,Monaco
+MDA,Moldova,Moldova
+MDG,Madagascar,Madagascar
+MDV,Maldives,Maldives
+MEX,Mexico,Mexico
+MKD,Macedonia,Macedonia
+MLI,Mali,Mali
+MLT,Malta,Malta
+MMR,Myanmar,Myanmar
+MNE,Montenegro,Montenegro
+MNG,Mongolia,Mongolia
+MNP,Northern Mariana Islands,Northern Mariana Islands
+MOZ,Mozambique,Mozambique
+MRT,Mauritania,Mauritania
+MSR,Montserrat,Montserrat
+MUS,Mauritius,Mauritius
+MWI,Malawi,Malawi
+MYS,Malaysia,Malaysia
+NAM,Namibia,Namibia
+NCL,New Caledonia,New Caledonia
+NER,Niger,Niger
+NGA,Nigeria,Nigeria
+NIC,Nicaragua,Nicaragua
+NLD,Netherlands,Netherlands
+NOR,Norway,Norway
+NPL,Nepal,Nepal
+NZL,New Zealand,New Zealand
+OMN,Oman,Oman
+PAK,Pakistan,Pakistan
+PAN,Panama,Panama
+PER,Peru,Peru
+PHL,Philippines,Philippines
+PNG,Papua New Guinea,Papua New Guinea
+POL,Poland,Poland
+PRI,Puerto Rico,Puerto Rico
+PRT,Portugal,Portugal
+PRY,Paraguay,Paraguay
+PSE,Palestine,Palestine
+PYF,French Polynesia,French Polynesia
+QAT,Qatar,Qatar
+RKS,Kosovo,Kosovo
+ROU,Romania,Romania
+RUS,Russia,Russia
+RWA,Rwanda,Rwanda
+SAU,Saudi Arabia,Saudi Arabia
+SDN,Sudan,Sudan
+SEN,Senegal,Senegal
+SGP,Singapore,Singapore
+SLE,Sierra Leone,Sierra Leone
+SLV,El Salvador,El Salvador
+SMR,San Marino,San Marino
+SOM,Somalia,Somalia
+SRB,Serbia,Serbia
+SSD,South Sudan,South Sudan
+STP,Sao Tome & P.,Sao Tome and Principe
+SUR,Suriname,Suriname
+SVK,Slovakia,Slovakia
+SVN,Slovenia,Slovenia
+SWE,Sweden,Sweden
+SWZ,Swaziland,Swaziland
+SXM,Sint Maarten (Dutch part),Sint Maarten (Dutch part)
+SYC,Seychelles,Seychelles
+SYR,Syria,Syria
+TCA,Turks and Caicos Islands,Turks and Caicos Islands
+TCD,Chad,Chad
+TGO,Togo,Togo
+THA,Thailand,Thailand
+TJK,Tajikistan,Tajikistan
+TLS,Timor,Timor
+TTO,Trinidad and Tobago,Trinidad and Tobago
+TUN,Tunisia,Tunisia
+TUR,Turkey,Turkey
+TWN,Taiwan,Taiwan
+TZA,Tanzania,Tanzania
+UGA,Uganda,Uganda
+UKR,Ukraine,Ukraine
+URY,Uruguay,Uruguay
+USA,United States,United States
+UZB,Uzbekistan,Uzbekistan
+VAT,Vatican,Vatican
+VCT,St. Vincent & the Grenadines,Saint Vincent and the Grenadines
+VEN,Venezuela,Venezuela
+VGB,British Virgin Islands,British Virgin Islands
+VIR,U.S Virgin Islands,United States Virgin Islands
+VNM,Vietnam,Vietnam
+YEM,Yemen,Yemen
+ZAF,South Africa,South Africa
+ZMB,Zambia,Zambia
+ZWE,Zimbabwe,Zimbabwe
+WLD,World,World
+LSO,Lesotho,Lesotho
+MYT,Mayotte,Mayotte
+SHN,Saint Helena,Saint Helena
+SSA,Sub-Saharan Africa,Sub-Saharan Africa
+MEA,Middle-East and North Africa,Middle-East and North Africa
+TON,Tonga,Tonga
+XKX,Kosovo,Kosovo
+SLB,Solomon Islands,Solomon Islands
+WSM,Samoa,Samoa
+VUT,Vanuatu,Vanuatu
