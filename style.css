@@ -175,3 +175,7 @@ span.thin {
     width: 30%;
   }
 }
+
+.hide-links {
+  display: none;
+}

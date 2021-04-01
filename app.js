@@ -76,8 +76,9 @@ function setVisualHeight(parent, mobile) {
 function prepChartData(data) {
   // Change in place.
   data.forEach(d => {
-    d.links = JSON.parse(d.links);
-    d.sources = JSON.parse(d.sources);
+    // Return array so D3 can build DOM if empty or not.
+    d.links = d.links ? JSON.parse(d.links) : [];
+    d.sources = d.sources ? JSON.parse(d.sources) : [];
     d.height_factor = d.height_factor || 1;
   });
 }
@@ -99,7 +100,7 @@ function buildIntro(country) {
   d3.select('#intro').html(html);
 }
 
-function buildChartModuleBase() {
+function buildChartModuleBase(d) {
   return `
     <section class="module-head">
       <h3></h3>
@@ -131,7 +132,7 @@ function buildChartModuleBase() {
           </div>
         </div>
 
-        <div class="chart-links right">
+        <div class="chart-links right ${d.links.length ? '' : 'hide-links'}">
           <div class="prompt">See also:</div>
           <div class="links"></div>
         </div>
@@ -231,23 +232,23 @@ function ready(data) {
 // Load the data
 function load() {
   // // Local.
-  const charts = d3.csv('data/country-data.csv', d3.autoType);
-  const availability = d3.csv('data/data-availability.csv', d3.autoType);
-  const countryLookup = d3.csv('data/country-lookup.csv', d3.autoType);
+  // const charts = d3.csv('data/country-data.csv', d3.autoType);
+  // const availability = d3.csv('data/data-availability.csv', d3.autoType);
+  // const countryLookup = d3.csv('data/country-lookup.csv', d3.autoType);
 
   // GitHub.
-  // const charts = d3.csv(
-  //   'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-data.csv',
-  //   d3.autoType
-  // );
-  // const availability = d3.csv(
-  //   'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/data-availability.csv',
-  //   d3.autoType
-  // );
-  // const countryLookup = d3.csv(
-  //   'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-lookup.csv',
-  //   d3.autoType
-  // );
+  const charts = d3.csv(
+    'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-data.csv',
+    d3.autoType
+  );
+  const availability = d3.csv(
+    'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/data-availability.csv',
+    d3.autoType
+  );
+  const countryLookup = d3.csv(
+    'https://raw.githubusercontent.com/larsvers/one-country-page-data/main/country-lookup.csv',
+    d3.autoType
+  );
 
   Promise.all([charts, availability, countryLookup]).then(ready);
 }
