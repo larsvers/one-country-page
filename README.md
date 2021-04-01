@@ -4,8 +4,7 @@
 
 - You make your chart in Flourish with all countries included
 - A few topline requirements from a page build perspective:
-  - Each chart needs a name that can be used as a CSS selector. Basically, it should be lowercase, no special characters, dash separated words. You should hold on to this chart name across all datasets.
-  - All countries in the data with an upper case 3 letter `iso_code`
+  - Each topic ('topic_id` in _country-data.csv_) and chart ('name` in _country-data.csv_) needs a name that can be used as a CSS selector → lowercase, no special characters, dash separated words. You should hold on to this chart name across all datasets.
   - Bar chart
     - Color mode: row
     - Palette: single color
@@ -14,6 +13,8 @@
     - Series filter: Multi select
     - Max series to show: ~3 
     - URL settings: `series_filter`
+  - Stacked area chart
+    - URL settings: `row_filter`
 
 ## The data
 
@@ -53,21 +54,3 @@ The layout as well as the charts are **responsive** - but this is a first go at 
 
 Also, the **share sections** are not wired up as you might have share logic at the ready. These can link to the page URL, or each individual chart as each chart module uses the chart's name as an id which can be used as a URL hash to link directly to the chart.
 
-## Todo's
-
-- It's not cross browser tested but should be largely fine 
-
-  The only library used is D3 (to load and prep the data and build the DOM) and is v5, which is written in ES5, so will work well on older browsers. Code is ES6 in that it uses `const`, `let`, arrow functions, but no mad features that need polyfilling.
-  
-  The layout uses flexbox but again, no wild features, so should be fine, less a few IE11 tweaks maybe. 
-
-
-- Wire up with ONE page
-- Add and test charts and related data
-- URL settings
-
-  Currently the settings responsible for highlighting the country in the Flourish charts are kept simple and semi-hardcoded (function `getChartHash`). This might need a more flexible design, dependning on what other settings one might want to control.
-
-- height
-
-  The chart-height is currently controled by the chart container, which works for line and bar charts as in the example, but might not for other charts. Something to evaluate when all charts are in.
